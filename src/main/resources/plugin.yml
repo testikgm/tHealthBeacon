@@ -1,0 +1,31 @@
+name: tHealthBeacon
+main: me.testikgm.tHealthBeacon
+version: ${project.version}
+api-version: 1.16
+author: tHealthBeacon Team
+description: Умный анализатор производительности Minecraft сервера
+
+commands:
+  healthbeacon:
+    description: Показать анализ производительности сервера
+    usage: /healthbeacon [report|status|diagnosis]
+    aliases: [hb, health]
+  hbreport:
+    description: Сгенерировать HTML отчёт
+    usage: /hbreport
+    aliases: [report]
+
+permissions:
+  healthbeacon.use:
+    description: Разрешение на использование команды
+    default: op
+  healthbeacon.report:
+    description: Разрешение на генерацию отчётов
+    default: op
+  healthbeacon.*:
+    description: Все разрешения tHealthBeacon
+    default: op
+    children:
+      healthbeacon.use: true
+      healthbeacon.report: true
+

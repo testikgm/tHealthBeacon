@@ -1,0 +1,67 @@
+# tHealthBeacon — Passive Edition Configuration
+# Умный анализатор производительности Minecraft сервера
+
+# OpenRouter AI Integration
+openrouter:
+  enabled: true
+  api_key: "YOUR_OPENROUTER_API_KEY_HERE"
+  model: "gpt-4o-mini"
+  temperature: 0.3
+  max_tokens: 1000
+  # Задержка между запросами к API (в секундах) для избежания rate limit (429)
+  # Рекомендуется: 5-10 секунд для бесплатных ключей, 2-3 секунды для платных
+  request_delay_seconds: 5
+  # Максимальное количество последовательных ошибок 429 перед пропуском остальных метрик
+  # Если получим столько 429 подряд, пропустим анализ остальных метрик
+  max_consecutive_429: 3
+
+# Collector Settings
+collector:
+  interval_minutes: 5       # как часто собирать снимки
+  snapshot_folder: "plugins/tHealthBeacon/snapshots/"
+  keep_snapshots: 50        # сколько последних сохранять
+  min_for_report: 10        # минимальное количество снимков для отчёта
+
+# Report Settings
+report:
+  save_html: true
+  folder: "plugins/tHealthBeacon/reports/"
+
+# Интервал сбора метрик (в тиках, 20 тиков = 1 секунда)
+metrics-interval: 100
+
+# Размер окна для анализа TPS (в минутах)
+tps-window-5min: true
+tps-window-10min: true
+tps-window-30min: true
+
+# Мониторинг памяти
+memory-monitoring: true
+memory-leak-detection: true
+gc-monitoring: true
+
+# Анализ плагинов
+plugin-profiling: true
+plugin-load-time-tracking: true
+
+# Сканирование чанков
+chunk-scanning: true
+hot-zone-threshold: 500  # Количество сущностей для определения "горячей зоны"
+
+# Мониторинг диска
+disk-monitoring: true
+disk-latency-threshold: 2000  # Порог задержки диска в миллисекундах
+
+# Сетевая телеметрия
+network-monitoring: true
+ping-jitter-threshold: 30  # Порог джиттера пинга в процентах
+
+# Генерация отчётов 
+auto-report-interval: 3600  # Интервал автоматической генерации отчёта (в секундах, 0 = отключено)
+report-format: html  # html или markdown
+report-directory: reports
+
+# Уведомления
+notify-on-issues: true
+notify-on-critical: true
+
